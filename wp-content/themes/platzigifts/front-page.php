@@ -12,8 +12,18 @@
 
     <div class="lista-productos my-5">
         <h2 class="text-center">Productos</h2>
-
         <div class="row">
+            <div class="col-12">
+                <select class="form-select" name="categorias-productos" id="categorias-productos">
+                    <option value="">Todas</option>
+                    <?php $terms = get_terms('categoria-productos', array('hide_empty' => true)); ?>
+                    <?php foreach ($terms as $term): ?>
+                        <option value="<?php echo $term->slug ?>"><?php echo $term->name ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+        <div class="row justify-content-center" id="resultado-productos">
         <?php
         $args = array(
             'post_type' => 'producto',
@@ -41,6 +51,13 @@
         }
         ?>
         </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12"><h1>Novedades</h1></div>
+    </div>
+    <div class="row" id="resultado-novedades">
+        
     </div>
 
 </main>

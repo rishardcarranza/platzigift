@@ -13,8 +13,8 @@
                     <?php the_content(); ?>
                 </div>
             </div>
-<?php   }
-    }?>
+            <?php get_template_part('template-parts/post', 'navigation'); ?>
+<?php   } }?>
 </main>
 
 
