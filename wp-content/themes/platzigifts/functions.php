@@ -71,7 +71,7 @@ function productos_type() {
         'can_export' => true,
         'publicly_queryable' => true,
         'rewrite' => true,
-        'show_in_rest' => true,
+        'show_in_rest' => false,
     );
     register_post_type('producto', $args);
 }

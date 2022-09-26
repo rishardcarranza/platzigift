@@ -1,21 +1,9 @@
 version: '3.1'
 services:
-  wordpress:
-    image: wordpress 
-    ports:
-      - 8088:80
-    environment:
-      WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: admin
-      WORDPRESS_DB_PASSWORD: admin
-      WORDPRESS_DB_NAME: platzigift
-    volumes:
-      - ./platzigift:/var/www/html
-
   db:
     image: mysql:8.0
     ports:
-      - 8886:3306
+      - 8086:3306
     environment:
       MYSQL_DATABASE: platzigift
       MYSQL_USER: admin
@@ -24,3 +12,26 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     volumes:
       - ./mysql:/var/lib/mysql
+    
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress 
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: admin
+      WORDPRESS_DB_PASSWORD: admin
+      WORDPRESS_DB_NAME: platzigift
+      WORDPRESS_MAILHOG_HOST: mailhog
+      WORDPRESS_MAILHOG_PORT: 1025
+    volumes:
+      - ./platzigift:/var/www/html
+
+  mailhog:
+    image: mailhog/mailhog
+    restart: always
+    ports:
+      - 1025:1025
+      - 8025:8025
