@@ -17,8 +17,9 @@ add_action('after_setup_theme', 'init_template');
 function assets() {
     wp_register_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css', '', '5.2.1', 'all');
     wp_register_style('montserrat', 'https://fonts.googleapis.com/css2?family=Montserrat&display=swap', '', '2', 'all');
+    wp_register_style('customcss', get_template_directory_uri().'/assets/css/style.css', '', '1', 'all');
 
-    wp_enqueue_style('estilos', get_stylesheet_uri(), array('bootstrap','montserrat'), '1.0', 'all');
+    wp_enqueue_style('estilos', get_stylesheet_uri(), array('bootstrap','montserrat','customcss'), '1.0', 'all');
 
     wp_register_script('popper', 'https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js', '', '2.11.6', true);
     wp_enqueue_script('bootstrapjs', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js', array('jquery','popper'), '5.2.1', true);
@@ -75,7 +76,6 @@ function productos_type() {
     );
     register_post_type('producto', $args);
 }
-
 add_action('init', 'productos_type');
 
 // Taxonomy

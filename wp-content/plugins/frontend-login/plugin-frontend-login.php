@@ -12,3 +12,26 @@
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:      yardsale
  */
+
+ define("FL_PATH", plugin_dir_path(__FILE__));
+
+ // API Rest
+ require_once FL_PATH."/includes/API/api-registro.php";
+ require_once FL_PATH."/includes/API/api-login.php";
+
+ // Shortcodes
+ require_once FL_PATH."/public/shortcode/form-registro.php";
+ require_once FL_PATH."/public/shortcode/form-login.php";
+
+ // Crear roles al activar plugin
+ function fl_plugin_activate() {
+    add_role('cliente', 'Cliente', array('read_post'));
+ }
+register_activation_hook(__FILE__, 'fl_plugin_activate');
+
+
+// Cuando se desactive el plugin
+function fl_plugin_deactivate() {
+    remove_role('cliente');
+}
+register_deactivation_hook(__FILE__, 'fl_plugin_deactivate');
