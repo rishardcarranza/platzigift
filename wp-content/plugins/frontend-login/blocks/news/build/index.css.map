@@ -1,0 +1,1 @@
+{"version":3,"file":"index.css","mappings":";;;AAAA;EACI;AACJ;AACI;EACE;AACN,C","sources":["webpack://blocks/./news/src/edit.scss"],"sourcesContent":[".wp-block-fl-news {\n    color: #0d6efd;\n  \n    a {\n      color: #0d6efd;\n    }\n}"],"names":[],"sourceRoot":""}

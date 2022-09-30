@@ -1,0 +1,18 @@
+{
+    "apiVersion": 2,
+    "name": "fl/news",
+    "title": "News",
+    "category": "widgets",
+    "icon": "list-view",
+    "description": "Show news.",
+    "keywords": ["posts", "news", "fl"],
+    "version": "0.0.1",
+    "textdomain": "fl",
+    "attributes": {
+        "category": {
+            "type": "integer"
+        }
+    },
+    "editorScript": "file:./build/index.js",
+    "style": "file:./build/index.css"
+}
